@@ -15,17 +15,17 @@ In the end I adopted a simple strategy:
 - Tuples are implicitly ordered by position. So tuple T1 = [N1, H1, B1, C1, P1] refers to the first house on the street, and so on.
 
 - Constraints like “The Brit lives in a red house” are mapped to numerical expressions, like:
-  10 * N1 + H1 #= 13 #\/
+  10 * N1 + H1 #= 13 #\\/
   
-  10 * N2 + H2 #= 13 #\/
+  10 * N2 + H2 #= 13 #\\/
   
-  10 * N3 + H3 #= 13 #\/
+  10 * N3 + H3 #= 13 #\\/
   
-  10 * N4 + H4 #= 13 #\/ 
+  10 * N4 + H4 #= 13 #\\/ 
   
   10 * N5 + H5 #= 13
   
-(Because 10 * Brit + red = 13). I don’t know where the Brit lives on the street, but one of the combinations must have a match. Note that #\/ is the “or” in clp(fd).
+(Because 10 * Brit + red = 13). I don’t know where the Brit lives on the street, but one of the combinations must have a match. Note that #\\/ is the “or” in clp(fd).
 
 I had to play around a little before I settled on this form to express constraints. Other forms that were shorter gave run-time errors when combined in an “or” expression. Overall, once you get the idea, is pretty easy to understand the constraints. Symbolic constants would have helped, but again it’s not something you get in prolog: you have to express constants through facts, and in the end you get a more verbose code in cases like this. I could have avoided the multiplication by shifting the domains, but I choose not to.
 
