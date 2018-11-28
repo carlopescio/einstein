@@ -16,10 +16,15 @@ In the end I adopted a simple strategy:
 
 - Constraints like “The Brit lives in a red house” are mapped to numerical expressions, like:
   10 * N1 + H1 #= 13 #\/
+  
   10 * N2 + H2 #= 13 #\/
+  
   10 * N3 + H3 #= 13 #\/
+  
   10 * N4 + H4 #= 13 #\/ 
+  
   10 * N5 + H5 #= 13
+  
 (Because 10 * Brit + red = 13). I don’t know where the Brit lives on the street, but one of the combinations must have a match. Note that #\/ is the “or” in clp(fd).
 
 I had to play around a little before I settled on this form to express constraints. Other forms that were shorter gave run-time errors when combined in an “or” expression. Overall, once you get the idea, is pretty easy to understand the constraints. Symbolic constants would have helped, but again it’s not something you get in prolog: you have to express constants through facts, and in the end you get a more verbose code in cases like this. I could have avoided the multiplication by shifting the domains, but I choose not to.
@@ -35,9 +40,13 @@ einstein( T1, T2, T3, T4, T5 ).
 You immediately get back
 
 T1 = [4, 5, 5, 2, 1],
+
 T2 = [2, 1, 4, 5, 5],
+
 T3 = [1, 3, 3, 3, 2],
+
 T4 = [3, 2, 2, 4, 4],
+
 T5 = [5, 4, 1, 1, 3]
 
 So the answer to “Who keeps fish” is in tuple T4 (fish = 4, pet is the last field) and so nationality is 3 = German as expected. As I said, the code runs fast enough that you don’t notice. I didn’t run any benchmark.
